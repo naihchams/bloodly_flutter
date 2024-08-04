@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/constants/color.dart';
 import 'package:myapp/constants/images.dart';
-import 'package:myapp/screens/register_screen.dart';
+import 'package:myapp/screens/login_screen.dart';
 import 'package:myapp/utils/form_validation.dart';
 import 'package:myapp/widgets/custom_button.dart';
 import 'package:myapp/widgets/custom_textfield.dart';
 
-class LoginScreen extends StatelessWidget {
-  LoginScreen({super.key});
+class RegisterScreen extends StatelessWidget {
+  RegisterScreen({super.key});
 
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  final _confirmPasswordController = TextEditingController();
+
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -37,7 +39,7 @@ class LoginScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const Text(
-                    "Login here",
+                    "Create Account",
                     style: TextStyle(
                       fontSize: 27,
                       fontWeight: FontWeight.bold,
@@ -49,7 +51,7 @@ class LoginScreen extends StatelessWidget {
                   const SizedBox(
                     width: 250,
                     child: Text(
-                      "Welcome back, you've been missed!",
+                      "Create an account so you can make a difference",
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 19,
@@ -76,27 +78,26 @@ class LoginScreen extends StatelessWidget {
                           validator: validatePassword,
                         ),
                         const SizedBox(height: 16),
-                        Align(
-                          alignment: Alignment.centerRight,
-                          child: TextButton(
-                            onPressed: () {},
-                            child: const Text(
-                              "Forgot your password?",
-                              style: TextStyle(
-                                color: primaryColor,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500,
-                              ),
-                              textAlign: TextAlign.right,
-                            ),
-                          ),
+                        CustomTextField(
+                          hintText: 'Confirm Password',
+                          controller: _confirmPasswordController,
+                          obscureText: true,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please confirm your password';
+                            }
+                            if (value != _passwordController.text) {
+                              return 'Passwords do not match';
+                            }
+                            return null;
+                          },
                         ),
                         const SizedBox(height: 16),
                         SizedBox(
                           width: MediaQuery.of(context).size.width,
                           child: Expanded(
                             child: CustomButton(
-                              text: "Sign In",
+                              text: "Sign Up",
                               backgroundColor: primaryColor,
                               foregroundColor: Colors.white,
                               onPressed: () {
@@ -104,6 +105,8 @@ class LoginScreen extends StatelessWidget {
                                   print('Email: ${_emailController.text}');
                                   print(
                                       'Password: ${_passwordController.text}');
+                                  print(
+                                      'Password: ${_confirmPasswordController.text}');
                                 }
                               },
                               elevation: 2,
@@ -116,12 +119,12 @@ class LoginScreen extends StatelessWidget {
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => RegisterScreen(),
+                                builder: (context) => LoginScreen(),
                               ),
                             );
                           },
                           child: const Text(
-                            "Create new account",
+                            "Already have an account",
                             style: TextStyle(
                               color: darkGreyColor,
                               fontSize: 16,
