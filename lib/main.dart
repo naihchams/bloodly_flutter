@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/constants/images.dart';
 import 'package:myapp/screens/forgot_password_screen.dart';
+import 'package:myapp/screens/reset_password_screen.dart';
 import 'package:myapp/screens/verification_screen.dart';
 import 'package:myapp/screens/welcome_screen.dart';
 
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
           // tested with just a hot reload.
 
           ),
-      home: ForgotPasswordScreen(),
+      home: ResetPasswordScreen(),
     );
   }
 }
