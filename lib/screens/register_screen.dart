@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myapp/constants/color.dart';
 import 'package:myapp/constants/images.dart';
 import 'package:myapp/screens/login_screen.dart';
+import 'package:myapp/screens/verification_screen.dart';
 import 'package:myapp/utils/form_validation.dart';
 import 'package:myapp/widgets/custom_button.dart';
 import 'package:myapp/widgets/custom_textfield.dart';
@@ -107,6 +108,9 @@ class RegisterScreen extends StatelessWidget {
                                       'Password: ${_passwordController.text}');
                                   print(
                                       'Password: ${_confirmPasswordController.text}');
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => VerificationScreen(),
+                                  ),);
                                 }
                               },
                               elevation: 2,
