@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myapp/constants/color.dart';
 import 'package:myapp/constants/images.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:myapp/screens/login_screen.dart';
 import 'package:myapp/widgets/custom_button.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -62,7 +63,14 @@ class WelcomeScreen extends StatelessWidget {
                       backgroundColor: primaryColor,
                       foregroundColor: Colors.white,
                       elevation: 2,
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => LoginScreen(),
+                          ),
+                        );
+                      },
                     ),
                   ),
                   const SizedBox(width: 10),

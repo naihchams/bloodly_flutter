@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/constants/color.dart';
-import 'package:myapp/constants/images.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomButton extends StatelessWidget {
   final String text;
